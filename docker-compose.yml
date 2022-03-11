@@ -1,9 +1,9 @@
 version: "3.3"
 
 services:
-  web:
+  app:
     build: .
-    command: bash -c "python app/api.py"
+    command: bash -c "python app/main.py"
     volumes:
       - .:/app
     ports:
@@ -16,6 +16,7 @@ services:
     restart: always
     ports:
       - "5432:5432"
+    env_file: .env
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
